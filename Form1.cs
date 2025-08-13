@@ -143,10 +143,15 @@ namespace BgMacro
             SaveSettings();
         }
 
+        int lastTime = -1;
         private void timer3_Tick(object sender, EventArgs e)
         {
-            if(lastClick.Elapsed.TotalSeconds > 4)
-                lblStatus.Text = (int)(Settings.interval - lastClick.Elapsed.TotalSeconds) + "s until next key";
+            int time = (int)Math.Round(Settings.interval - lastClick.Elapsed.TotalSeconds);
+            if (lastClick.Elapsed.TotalSeconds > 4 && time != lastTime)
+                lblStatus.Text = time + "s until next key";
+
+            lastTime = time;
+            progressBar1.Value = (int)Math.Round(lastClick.Elapsed.TotalSeconds / Settings.interval * 10000);
         }
     }
 }

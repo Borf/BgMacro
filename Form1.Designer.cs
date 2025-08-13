@@ -41,6 +41,7 @@
             label2 = new Label();
             label1 = new Label();
             groupBox3 = new GroupBox();
+            progressBar1 = new ProgressBar();
             lblStatus = new Label();
             btnStartStop = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
@@ -160,14 +161,26 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(progressBar1);
             groupBox3.Controls.Add(lblStatus);
             groupBox3.Controls.Add(btnStartStop);
             groupBox3.Location = new Point(18, 210);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(440, 57);
+            groupBox3.Size = new Size(440, 86);
             groupBox3.TabIndex = 4;
             groupBox3.TabStop = false;
             groupBox3.Text = "Action";
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(6, 51);
+            progressBar1.Maximum = 10000;
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(428, 23);
+            progressBar1.Step = 1;
+            progressBar1.Style = ProgressBarStyle.Continuous;
+            progressBar1.TabIndex = 2;
+            progressBar1.Value = 50;
             // 
             // lblStatus
             // 
@@ -194,14 +207,14 @@
             // 
             // timer3
             // 
-            timer3.Interval = 1000;
+            timer3.Interval = 10;
             timer3.Tick += timer3_Tick;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(476, 283);
+            ClientSize = new Size(476, 298);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -238,5 +251,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timer3;
+        private ProgressBar progressBar1;
     }
 }
