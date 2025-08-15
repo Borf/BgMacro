@@ -9,7 +9,7 @@ public class Settings
 {
     public string className { get; set; }
     public string windowTitle { get; set; }
-    public int interval { get; set; } = 60;
+    public decimal interval { get; set; } = 60;
     public string key { get; set; } = "VK_TAB";
     public bool autoStart { get; set; } = false;
 }

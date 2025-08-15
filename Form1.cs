@@ -86,7 +86,7 @@ namespace BgMacro
                 numericUpDown1.Enabled = false;
 
                 timer1_Tick(null, null);
-                timer1.Interval = (int)numericUpDown1.Value * 1000;
+                timer1.Interval = (int)(numericUpDown1.Value * 1000);
                 timer1.Start();
                 btnStartStop.Text = "Stop";
                 lblStatus.Text = "Running";
@@ -133,7 +133,7 @@ namespace BgMacro
             Settings.autoStart = chkAutoStart.Checked;
             Settings.className = ((Window)cmbWindows.SelectedItem).className;
             Settings.windowTitle = ((Window)cmbWindows.SelectedItem).windowTitle;
-            Settings.interval = (int)numericUpDown1.Value;
+            Settings.interval = numericUpDown1.Value;
             Settings.key = cmbButton.SelectedItem.ToString();
             File.WriteAllText("settings.json", JsonSerializer.Serialize(Settings, new JsonSerializerOptions() { WriteIndented = true, TypeInfoResolver = SourceGenerationContext.Default }));
         }
@@ -143,15 +143,15 @@ namespace BgMacro
             SaveSettings();
         }
 
-        int lastTime = -1;
+        decimal lastTime = -1;
         private void timer3_Tick(object sender, EventArgs e)
         {
-            int time = (int)Math.Round(Settings.interval - lastClick.Elapsed.TotalSeconds);
+            var time = Math.Round(Settings.interval - (decimal)lastClick.Elapsed.TotalSeconds,1);
             if (lastClick.Elapsed.TotalSeconds > 4 && time != lastTime)
                 lblStatus.Text = time + "s until next key";
 
             lastTime = time;
-            progressBar1.Value = (int)Math.Round(lastClick.Elapsed.TotalSeconds / Settings.interval * 10000);
+            progressBar1.Value = (int)Math.Round((decimal)lastClick.Elapsed.TotalSeconds / Settings.interval * 10000);
         }
     }
 }

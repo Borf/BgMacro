@@ -122,10 +122,11 @@
             // numericUpDown1
             // 
             numericUpDown1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            numericUpDown1.DecimalPlaces = 1;
             numericUpDown1.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             numericUpDown1.Location = new Point(134, 29);
             numericUpDown1.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
-            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(306, 23);
             numericUpDown1.TabIndex = 3;
